@@ -1,0 +1,18 @@
+{
+  "name": "favorite-button-library",
+  "version": "1.0.1",
+  "description": "A library for favorite button components",
+  "main": "dist/BHNFavoriteIcon.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Fatima Shibli",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.12",
+    "@babel/preset-react": "^7.16.12",
+    "webpack": "^5.62.2",
+    "webpack-cli": "^4.9.2"
+  }
+}
