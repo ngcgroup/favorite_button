@@ -7,7 +7,11 @@ class ContributionsWidget extends React.Component {
     super(props);
     
     this.state = {
-      isChecked: false
+      isChecked: false,
+      ctbt_state: 'none',
+      userid: ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      )
     };
   }
   componentDidMount () {
@@ -23,20 +27,18 @@ class ContributionsWidget extends React.Component {
     removeScript("https://experimentation.bhn.technology/scripts/wasabi.js");
   }
 
-  
-
   shouldDisplay = () => {
     // Set up properties that will be the same on all Wasabi calls.
     WASABI.setOptions({
       'applicationName': 'contributions',
-      'experimentName': 'charity_contributions',
+      'experimentName': 'charity_contributions_1',
       'protocol': 'https',
       'host': 'experimentation.bhn.technology:443'
     });
 
     // Check Wasabi to see if this user should be in the test and which bucket.
     WASABI.getAssignment({
-        'userID': this.state.username
+        'userID': this.state.userid
     }).then(
         (response) => {
             console.log('getAssignment: success');
@@ -48,14 +50,16 @@ class ContributionsWidget extends React.Component {
               this.setState({
                 ctbt_state: 'none'  
               });
+              console.log("control group");
                 
             }
             else if (response.assignment === 'test') {
-              this.setState({
-                ctbt_state: 'block'  
-              });
+                this.setState({
+                  ctbt_state: 'block'  
+                });
+                console.log("test group");
                 WASABI.postImpression({
-                  'userID': session.login.name
+                  'userID': this.state.userid
                 }).then(
                     function(response) {
                         console.log('postImpression: success');
@@ -68,6 +72,11 @@ class ContributionsWidget extends React.Component {
                         console.dir(error);
                     }
                 );
+            } else {
+              this.setState({
+                ctbt_state: 'none'  
+              });
+              console.log("no assignment");
             }
             // else the user got the Control bucket, and we don't do anything.
         },
@@ -85,7 +94,7 @@ class ContributionsWidget extends React.Component {
           'ClickedOnContribute',
           null /* No extra action info */,
           {
-              'userID': 'none'
+              'userID': this.state.userid
           }
       ).then(
           function (response) {
@@ -109,10 +118,10 @@ class ContributionsWidget extends React.Component {
   render() {
     const { isChecked } = this.state;
     const { label } = this.props;
-
+    console.log('render called ' + this.state.ctbt_state )
     return (
       <div>
-        <div id="ctbt" style={{ display: `${ this.state.ctbt_state }%` }}>
+        <div id="ctbt" style={{ display: `${ this.state.ctbt_state }` }}>
           Happiness doesnt result from what we get, but from what we give. BHN will give on your behalf  
           <br/>
 
