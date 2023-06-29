@@ -2,11 +2,17 @@
 <html>
   <head>
     <title>My App</title>
+
   </head>
   <body>
-    <h1>My App</h1>
+    <h1>My Contribution Widget</h1>
     <div id="contribute"></div>
     <script src="dist/bundle.js"></script>
-    
+    <script>
+      // Call the initializeWidget function with custom parameters
+      const customDiv = document.getElementById('contribute');
+      const widgetLabel = 'Let BHN contribute $1 to a charitable cause on your behalf!';
+      initializeWidget(customDiv, widgetLabel);
+    </script>
   </body>
 </html>
