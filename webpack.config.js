@@ -6,8 +6,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'BHNFavoriteIcon.js',
-    library: 'favorite-button-library',
+    filename: 'bundle.js',
+    library: 'contributions',
     libraryTarget: 'umd',
   },
   module: {

@@ -1,11 +1,11 @@
 import React from 'react';
-import BHNFavoriteIcon from './favorite-button-library/BHNFavoriteIcon';
+import ContributionsWidget from './contributions/ContributionsWidget';
 
 function App() {
   return (
     <div>
       {/* Any other components or app logic */}
-      <BHNFavoriteIcon color="red" size={24} />
+      <ContributionsWidget label="Allow BHN to contribute a $1 to a charitable donation !" />
     </div>
   );
 }
