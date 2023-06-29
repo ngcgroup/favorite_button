@@ -16,11 +16,13 @@ class ContributionsWidget extends React.Component {
   }
   componentDidMount () {
     appendScript("jq","https://code.jquery.com/jquery-1.12.3.min.js");
-    appendScript("ws", "https://experimentation.bhn.technology/scripts/wasabi.js");
+    document.getElementById("jq").addEventListener('load', () => {
+      appendScript("ws", "https://experimentation.bhn.technology/scripts/wasabi.js");
+    });
     document.getElementById("ws").addEventListener('load', () => {
       // DTM is loaded
       this.shouldDisplay();
-    })
+    });
   }
   componentDidUnmount () {
     removeScript("https://code.jquery.com/jquery-1.12.3.min.js");
