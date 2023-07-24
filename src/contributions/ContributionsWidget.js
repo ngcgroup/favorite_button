@@ -1,3 +1,4 @@
+/*global WASABI*/
 import React from 'react';
 import {appendScript} from '../utils/appendScript'
 import {removeScript} from '../utils/removeScript'
