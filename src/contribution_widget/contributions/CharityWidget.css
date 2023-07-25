@@ -1,0 +1,54 @@
+/* CharityWidget.css */
+
+/* Base styles for .rounded-box */
+.rounded-box {
+    border: 1px solid #9c9c9c;
+    /* Add a border to the box */
+    border-radius: 8px;
+    /* Add rounded corners */
+    max-width: 639px;
+    /* Set a maximum width for the box */
+    margin: 0 auto;
+    /* Center the box horizontally */
+    text-align: center;
+    /* Add some padding inside the box */
+}
+
+/* Base styles for .icon-message-container */
+.icon-message-container {
+    background-color: rgba(243, 238, 250, 1);
+    display: flex;
+    align-items: center;
+    /* Center items vertically */
+    justify-content: center;
+    /* Center items horizontally */
+    margin-bottom: 20px;
+    /* Add margin between the icon-message container and logos container */
+   
+    /* Add some padding inside the container */
+    border-radius: 8px;
+    /* Optional: Add rounded corners */
+    width: 100%;
+    text-align: center;
+}
+
+/* Styles for .icon */
+.icon {
+    width: 32px;
+    height: 30px;
+    margin-right: 10px;
+
+}
+
+
+/* Styles for .message */
+.message {
+    text-align: left;
+    font-size: 14px;
+    max-width: 325px;
+    /* margin: 0 auto; */
+    padding: 10px;
+    color: #29323E;
+    font-weight: 400;
+    line-height: 16px;
+}

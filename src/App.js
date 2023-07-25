@@ -1,25 +1,18 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import FavoriteButton from './fav-button/FavoriteButton';
+import ContributionsWidget from './contribution_widget/contributions/ContributionsWidget';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    
+        <ContributionsWidget label="Thank you for your purchase. Your patronage helps us donate up to $1 to one of these charities."/>
+        
+     
     </div>
-  );
+  )
 }
 
 export default App;
