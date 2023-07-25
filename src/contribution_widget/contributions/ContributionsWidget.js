@@ -51,8 +51,7 @@ class ContributionsWidget extends React.Component {
         'userID': this.state.userid
     }).then(
         (response) => {
-            console.log('getAssignment: success');
-            console.log(JSON.stringify(response));
+            
             // This object will include the assignment made and the status, which might tell you the experiment
             // has not been started, etc.
             // Note that if the experiment doesn't exist or hasn't been started, response.assignment is undefined, which is OK.
@@ -60,39 +59,36 @@ class ContributionsWidget extends React.Component {
               this.setState({
                 ctbt_state: 'block'  
               });
-              console.log("control group");
                 
             }
             else if (response.assignment === 'test') {
                 this.setState({
                   ctbt_state: 'block'  
                 });
-                console.log("test group");
+               
                 WASABI.postImpression({
                   'userID': this.state.userid
                 }).then(
                     function(response) {
-                        console.log('postImpression: success');
+                        
                         if (response) {
-                            console.log(JSON.stringify(response));
+                        
                         }
                     },
                     function(error) {
-                        console.log('postImpression: error');
-                        console.dir(error);
+                        
                     }
                 );
             } else {
               this.setState({
                 ctbt_state: 'none'  
               });
-              console.log("no assignment");
+             
             }
             // else the user got the Control bucket, and we don't do anything.
         },
         (error) => {
-            console.log('getAssignment: error');
-            console.dir(error);
+            
             this.setState({
               ctbt_state: 'none'  
             });
@@ -108,14 +104,13 @@ class ContributionsWidget extends React.Component {
           }
       ).then(
           function (response) {
-              console.log('postAction: success');
+              
               if (response) {
-                  console.log(JSON.stringify(response));
+                  
               }
           },
           function (error) {
-              console.log('postAction: error');
-              console.dir(error);
+             
           }
       );
 
